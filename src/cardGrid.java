@@ -1,3 +1,5 @@
+import com.company.Card;
+
 public class cardGrid {
-    card[][] Cards = new card[3][3];
+    Card[][] Cards = new Card[3][3];
 }
