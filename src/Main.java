@@ -35,7 +35,7 @@ public class Main {
                     cardGrid = new CardGrid();
                     deck.setDeck(cardGrid.generateCardGrid(deck.getDeck()));
                     gameOn = false;
-                    demo(usedDeck, cardGrid, deck);
+                    demo(usedDeck, cardGrid, deck, s);
                 }
                 case "q" -> {
                     playing = false;
@@ -46,26 +46,26 @@ public class Main {
             while (gameOn) {
                 cardGrid.printGrid();
                 System.out.println("Do you need a hint? (y/n) or press x to exit game");
-                input = s.next();
+                input = inputString(s.next());
                 if (input.equals("y")) {
                     cardGrid.printGrid(cardGrid.returnHint());
                 }
 
                 System.out.println("Please enter the X coordinate of card 1");
-                int posAX = s.nextInt();
+                int posAX = inputInt(s.nextInt());
                 System.out.println("Please enter the Y coordinate of card 1");
-                int posAY = s.nextInt();
+                int posAY = inputInt(s.nextInt());
                 System.out.println("Please enter the X coordinate of card 2");
-                int posBX = s.nextInt();
+                int posBX = inputInt(s.nextInt());
                 System.out.println("Please enter the Y coordinate of card 2");
-                int posBY = s.nextInt();
+                int posBY = inputInt(s.nextInt());
                 System.out.println("Is there a third card?");
-                input = s.next();
+                input = inputString(s.next());
                 if (input.equals("y")) {
                     System.out.println("Please enter the X coordinate of card 3");
-                    int posCX = s.nextInt();
+                    int posCX = inputInt(s.nextInt());
                     System.out.println("Please enter the Y coordinate of card 3");
-                    int posCY = s.nextInt();
+                    int posCY = inputInt(s.nextInt());
                     Card a = cardGrid.selectCard(posAX, posAY);
                     Card b = cardGrid.selectCard(posBX, posBY);
                     Card c = cardGrid.selectCard(posCX, posCY);
@@ -93,8 +93,8 @@ public class Main {
                     if (cardGrid.checkIfEleven(a, b)) {
                         usedDeck.addCard(a);
                         usedDeck.addCard(b);
-                        cardGrid.Cards[posAX][posAY] = deck.getDeck().pop();
-                        cardGrid.Cards[posBX][posBY] = deck.getDeck().pop();
+                        cardGrid.Cards[posAX][posAY] = deck.getCard();
+                        cardGrid.Cards[posBX][posBY] = deck.getCard();
                     } else {
                         System.out.println("Not a match!");
                     }
@@ -104,6 +104,31 @@ public class Main {
         }
     }
 
+    public  static int inputInt(int s){
+        boolean correctInput =true;
+        while (correctInput){
+            if(s>=0 && s<=2){
+                correctInput=false;
+            } else {
+                System.out.println("Please enter a value between 0 and 2");
+                s = new Scanner(System.in).nextInt();
+            }
+        }
+        return s;
+    }
+
+    public  static String inputString(String s){
+        boolean correctInput = true;
+        while (correctInput){
+            if(s.equals("y") || s.equals("n")){
+                correctInput = false;
+            } else {
+                System.out.println("Please enter a y (yes) or n (no)");
+                s = new Scanner(System.in).next();
+            }
+        }
+        return s;
+    }
 
     public static void replayMoves(Deck d, CardGrid cg, Scanner s) {
         d.reverse();
@@ -120,7 +145,7 @@ public class Main {
         }
     }
 
-    public static void demo(Deck ud, CardGrid cg, Deck d) {
+    public static void demo(Deck ud, CardGrid cg, Deck d, Scanner s) {
         var gameOn = true;
         while (gameOn) {
             cg.printGrid();
@@ -148,6 +173,7 @@ public class Main {
                 ud.addCard(b);
                 cg.Cards[posAX][posAY] = d.getDeck().pop();
                 cg.Cards[posBX][posBY] = d.getDeck().pop();
+
             } else {
                 gameOn = false;
             }

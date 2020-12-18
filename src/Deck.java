@@ -91,6 +91,14 @@ public class Deck {
         Collections.shuffle(this.deck);
     }
 
+    public Card getCard(){
+        if(returnDeckSize() > 0){
+            return deck.pop();
+        } else {
+            return new Card("",0,"");
+        }
+    }
+
     public void reverse(){
         Card[] c = new Card[returnDeckSize()];
         Card[] data = deck.toArray(c);
