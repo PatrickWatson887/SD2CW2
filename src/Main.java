@@ -99,8 +99,10 @@ public class Main {
                         System.out.println("Not a match!");
                     }
                 }
+
                 gameOn = cardGrid.checkIfAbleToAdvance();
             }
+            cardGrid.printGrid();
         }
     }
 
@@ -140,7 +142,6 @@ public class Main {
         for (Card c : d.getDeck()) {
             cg.Cards[c.getPrevPosX()][c.getPrevPosY()] = c;
             System.out.println(c.getFaceValue() + " was removed");
-            cg.printGrid();
             s.next();
         }
     }
@@ -158,6 +159,10 @@ public class Main {
 
                 Card a = cg.selectCard(posAX, posAY);
                 Card b = cg.selectCard(posBX, posBY);
+                System.out.println(a.getFaceValue() + " was removed");
+                System.out.println(b.getFaceValue() + " was removed");
+
+
 
                 a.setPrevPos(posAX, posAY);
                 b.setPrevPos(posBX, posBY);
@@ -167,6 +172,8 @@ public class Main {
                     int posCY = coordinates[5];
                     Card c = cg.selectCard(posCX, posCY);
                     c.setPrevPos(posCX, posCY);
+                    System.out.println(c.getFaceValue() + " was removed");
+
                 }
 
                 ud.addCard(a);

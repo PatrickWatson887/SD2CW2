@@ -113,8 +113,4 @@ public class Deck {
             deck.push(C);
         }
     }
-
-
-
-
 }
