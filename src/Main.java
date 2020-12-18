@@ -6,7 +6,7 @@ public class Main {
         playGame();
     }
 
-    public static void playGame(){
+    public static void playGame() {
         Deck deck = new Deck();
         deck.generateDeck();
         deck.shuffleDeck();
@@ -18,25 +18,34 @@ public class Main {
         boolean gameOn = true;
         boolean playing = true;
         while (playing) {
-            System.out.println("Press c to continue a game\nPress n for new game\nPress r to replay game");
+            System.out.println("Press c to continue a game\nPress n for new game\nPress r to replay game\nPress d to get a demo\nPress q to quit game");
             String input = s.next();
 
-            if (input.equals("c")) {
-                gameOn=true;
-            } else if (input.equals("n")) {
-
-                usedDeck = new Deck();
-                cardGrid = new CardGrid();
-                deck.setDeck(cardGrid.generateCardGrid(deck.getDeck()));
-                gameOn = true;
-            } else if(input.equals("r")){
-                replayMoves(usedDeck,cardGrid,s);
+            switch (input) {
+                case "c" -> gameOn = true;
+                case "n" -> {
+                    usedDeck = new Deck();
+                    cardGrid = new CardGrid();
+                    deck.setDeck(cardGrid.generateCardGrid(deck.getDeck()));
+                    gameOn = true;
+                }
+                case "r" -> replayMoves(usedDeck, cardGrid, s);
+                case "d" -> {
+                    usedDeck = new Deck();
+                    cardGrid = new CardGrid();
+                    deck.setDeck(cardGrid.generateCardGrid(deck.getDeck()));
+                    demo(usedDeck, cardGrid, deck);
+                }
+                case "q" -> {
+                    playing = false;
+                    gameOn = false;
+                }
             }
 
             while (gameOn) {
                 cardGrid.printGrid();
                 System.out.println("Do you need a hint? (y/n) or press x to exit game");
-                input =s.next();
+                input = s.next();
                 if (input.equals("y")) {
                     cardGrid.printGrid(cardGrid.returnHint());
                 }
@@ -51,19 +60,19 @@ public class Main {
                 int posBY = s.nextInt();
                 System.out.println("Is there a third card?");
                 input = s.next();
-                if(input.equals("y")){
+                if (input.equals("y")) {
                     System.out.println("Please enter the X coordinate of card 3");
                     int posCX = s.nextInt();
                     System.out.println("Please enter the Y coordinate of card 3");
                     int posCY = s.nextInt();
                     Card a = cardGrid.selectCard(posAX, posAY);
                     Card b = cardGrid.selectCard(posBX, posBY);
-                    Card c = cardGrid.selectCard(posCX,posCY);
-                    a.setPrevPos(posAX,posAY);
-                    b.setPrevPos(posBX,posBY);
-                    c.setPrevPos(posCX,posCY);
+                    Card c = cardGrid.selectCard(posCX, posCY);
+                    a.setPrevPos(posAX, posAY);
+                    b.setPrevPos(posBX, posBY);
+                    c.setPrevPos(posCX, posCY);
 
-                    if (cardGrid.checkIfEleven(a, b,c)) {
+                    if (cardGrid.checkIfEleven(a, b, c)) {
                         usedDeck.addCard(a);
                         usedDeck.addCard(b);
                         usedDeck.addCard(c);
@@ -74,11 +83,11 @@ public class Main {
                         System.out.println("Not a match!");
                     }
 
-                } else if(input.equals("n")){
+                } else if (input.equals("n")) {
                     Card a = cardGrid.selectCard(posAX, posAY);
                     Card b = cardGrid.selectCard(posBX, posBY);
-                    a.setPrevPos(posAX,posAY);
-                    b.setPrevPos(posBX,posBY);
+                    a.setPrevPos(posAX, posAY);
+                    b.setPrevPos(posBX, posBY);
 
                     if (cardGrid.checkIfEleven(a, b)) {
                         usedDeck.addCard(a);
@@ -93,26 +102,49 @@ public class Main {
             }
         }
     }
-    public static void replayMoves(Deck d, CardGrid cg, Scanner s){
+
+
+    public static void replayMoves(Deck d, CardGrid cg, Scanner s) {
         d.reverse();
-        for(Card c: d.getDeck()){
+        for (Card c : d.getDeck()) {
             cg.Cards[c.getPrevPosX()][c.getPrevPosY()] = c;
         }
         cg.printGrid();
         d.reverse();
-        for(Card c: d.getDeck()){
+        for (Card c : d.getDeck()) {
             cg.Cards[c.getPrevPosX()][c.getPrevPosY()] = c;
-            System.out.println(c.getFaceValue()+" was removed");
+            System.out.println(c.getFaceValue() + " was removed");
             cg.printGrid();
             s.next();
         }
 
 
-
-    }
-    public static void demo(){
-
     }
 
+    public static void demo(Deck ud, CardGrid cg, Deck d) {
+        var gameOn = true;
+        while (gameOn) {
+            cg.printGrid();
+            var coordinates = cg.getDemoMove();
+            if (coordinates != null) {
+                int posAX = coordinates[0];
+                int posAY = coordinates[1];
+                int posBX = coordinates[2];
+                int posBY = coordinates[3];
 
+                Card a = cg.selectCard(posAX, posAY);
+                Card b = cg.selectCard(posBX, posBY);
+
+                a.setPrevPos(posAX, posAY);
+                b.setPrevPos(posBX, posBY);
+
+                ud.addCard(a);
+                ud.addCard(b);
+                cg.Cards[posAX][posAY] = d.getDeck().pop();
+                cg.Cards[posBX][posBY] = d.getDeck().pop();
+            } else {
+                gameOn = false;
+            }
+        }
+    }
 }

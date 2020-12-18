@@ -41,7 +41,7 @@ public class CardGrid {
         for(int i=0;i<3;i++){
             System.out.print("("+i+")");
             for(int j=0; j<3;j++){
-                if(cards[0].getSuit() == Cards[i][j].getSuit() || cards[1].getSuit() == Cards[i][j].getSuit()) {
+                if(cards[0].getSuit().equals(Cards[i][j].getSuit()) || cards[1].getSuit().equals(Cards[i][j].getSuit())) {
                     System.out.print("["+Cards[i][j].getSuit()+"]");
                 } else {
                     System.out.print(" "+Cards[i][j].getSuit()+" ");
@@ -67,8 +67,25 @@ public class CardGrid {
             for(int j=0;j<3;j++){
                 Card a = Cards[i][j];
                 for(int k=0;k<3; k++){
-                    if(checkIfEleven(a,Cards[j][k])){
-                      return  new Card[]{a, Cards[j][k]};
+                    Card b = Cards[j][k];
+                    if(checkIfEleven(a,b)){
+                      return new Card[]{a, b};
+                    }
+                }
+            }
+        }
+        System.out.println("No move is possible");
+        return null;
+    }
+
+    public int[] getDemoMove(){
+        for(int i=0;i<3;i++){
+            for(int j=0;j<3;j++){
+                Card a = Cards[i][j];
+                for(int k=0;k<3; k++){
+                    Card b = Cards[j][k];
+                    if(checkIfEleven(a, b)){
+                        return new int[]{i,j,j,k};
                     }
                 }
             }
@@ -78,20 +95,11 @@ public class CardGrid {
     }
 
     public boolean checkIfEleven(Card A, Card B) {
-        if (A.getValue() + B.getValue() == 11) {
-            return true;
-
-        } else {
-            return false;
-        }
+        return A.getValue() + B.getValue() == 11;
     }
 
     public boolean checkIfEleven(Card a, Card b, Card c){
-        if(a.getValue()+b.getValue()+c.getValue() ==48){
-            return true;
-        } else {
-            return false;
-        }
+        return a.getValue() + b.getValue() + c.getValue() == 48;
     }
 
 }
