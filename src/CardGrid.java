@@ -78,12 +78,35 @@ public class CardGrid {
         return null;
     }
 
+    public boolean isFaceCardAndUnique(Card card, Card[] faceCards) {
+        if (card.getValue() == 15) {
+            return true;
+        } else if (card.getValue() == 16) {
+            return true;
+        } else return card.getValue() == 17;
+    }
+
     public int[] getDemoMove(){
+        var count = 0;
+        int[] faceCards = new int[6];
+        var countTemp = 0;
+        Card[] faceCardTemp = new Card[3];
         for(int i=0;i<3;i++){
             for(int j=0;j<3;j++){
                 Card a = Cards[i][j];
                 for(int k=0;k<3; k++){
                     Card b = Cards[j][k];
+                    if(isFaceCardAndUnique(b, faceCardTemp)) {
+                        faceCardTemp[countTemp] = b;
+                        countTemp++;
+                        faceCards[count] = j;
+                        count++;
+                        faceCards[count] = k;
+                        count++;
+                    }
+                    if(count == 6) {
+                        return faceCards;
+                    }
                     if(checkIfEleven(a, b)){
                         return new int[]{i,j,j,k};
                     }
@@ -98,8 +121,7 @@ public class CardGrid {
         return A.getValue() + B.getValue() == 11;
     }
 
-    public boolean checkIfEleven(Card a, Card b, Card c){
-        return a.getValue() + b.getValue() + c.getValue() == 48;
+    public boolean checkIfEleven(Card A, Card B, Card C) {
+        return A.getValue() + B.getValue() + C.getValue() == 48;
     }
-
 }

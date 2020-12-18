@@ -44,7 +44,7 @@ public class Deck {
         newDeck.push(new Card("\uD83C\uDCB2",2, "2 of hearts"));
         newDeck.push(new Card("\uD83C\uDCB3",3,"3 of hearts"));
         newDeck.push(new Card("\uD83C\uDCB4",4,"4 of hearts"));
-        newDeck.push(new Card("\uD83C\uDCBA",5, "5 of hearts"));
+        newDeck.push(new Card("\uD83C\uDCB5",5, "5 of hearts"));
         newDeck.push(new Card("\uD83C\uDCB6",6, "6 of hearts"));
         newDeck.push(new Card("\uD83C\uDCB7",7,"7 of hearts"));
         newDeck.push(new Card("\uD83C\uDCB8",8, "8 of hearts"));
@@ -59,7 +59,7 @@ public class Deck {
         newDeck.push(new Card("\uD83C\uDCC2",2, "2 of diamonds"));
         newDeck.push(new Card("\uD83C\uDCC3",3,"3 of diamonds"));
         newDeck.push(new Card("\uD83C\uDCC4",4,"4 of diamonds"));
-        newDeck.push(new Card("\uD83C\uDCCA",5, "5 of diamonds"));
+        newDeck.push(new Card("\uD83C\uDCC5",5, "5 of diamonds"));
         newDeck.push(new Card("\uD83C\uDCC6",6, "6 of diamonds"));
         newDeck.push(new Card("\uD83C\uDCC7",7,"7 of diamonds"));
         newDeck.push(new Card("\uD83C\uDCC8",8, "8 of diamonds"));
@@ -75,7 +75,7 @@ public class Deck {
         newDeck.push(new Card("\uD83C\uDCD2",2, "2 of clubs"));
         newDeck.push(new Card("\uD83C\uDCD3",3,"3 of clubs"));
         newDeck.push(new Card("\uD83C\uDCD4",4,"4 of clubs"));
-        newDeck.push(new Card("\uD83C\uDCDA",5, "5 of clubs"));
+        newDeck.push(new Card("\uD83C\uDCD5",5, "5 of clubs"));
         newDeck.push(new Card("\uD83C\uDCD6",6, "6 of clubs"));
         newDeck.push(new Card("\uD83C\uDCD7",7,"7 of clubs"));
         newDeck.push(new Card("\uD83C\uDCD8",8, "8 of clubs"));
