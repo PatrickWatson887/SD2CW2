@@ -34,6 +34,7 @@ public class Main {
                     usedDeck = new Deck();
                     cardGrid = new CardGrid();
                     deck.setDeck(cardGrid.generateCardGrid(deck.getDeck()));
+                    gameOn = false;
                     demo(usedDeck, cardGrid, deck);
                 }
                 case "q" -> {
@@ -117,8 +118,6 @@ public class Main {
             cg.printGrid();
             s.next();
         }
-
-
     }
 
     public static void demo(Deck ud, CardGrid cg, Deck d) {
@@ -137,6 +136,13 @@ public class Main {
 
                 a.setPrevPos(posAX, posAY);
                 b.setPrevPos(posBX, posBY);
+
+                if(coordinates.length == 6){
+                    int posCX = coordinates[4];
+                    int posCY = coordinates[5];
+                    Card c = cg.selectCard(posCX, posCY);
+                    c.setPrevPos(posCX, posCY);
+                }
 
                 ud.addCard(a);
                 ud.addCard(b);
