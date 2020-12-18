@@ -35,9 +35,9 @@ public class Deck {
         newDeck.push(new Card("\uD83C\uDCA8",8, "8 of spades"));
         newDeck.push(new Card("\uD83C\uDCA9",9, "9 of spades"));
         newDeck.push(new Card("\uD83C\uDCAA",10, "10 of spades"));
-        newDeck.push(new Card("\uD83C\uDCAB",12, "King of spades"));
-        newDeck.push(new Card("\uD83C\uDCAD",13, "Queen of spades"));
-        newDeck.push(new Card("\uD83C\uDCAE",12, "Jack of spades"));
+        newDeck.push(new Card("\uD83C\uDCAB",15, "King of spades"));
+        newDeck.push(new Card("\uD83C\uDCAD",16, "Queen of spades"));
+        newDeck.push(new Card("\uD83C\uDCAE",17, "Jack of spades"));
 
         //hearts
         newDeck.push(new Card("\uD83C\uDCB1",1, "Ace of hearts"));
@@ -50,9 +50,9 @@ public class Deck {
         newDeck.push(new Card("\uD83C\uDCB8",8, "8 of hearts"));
         newDeck.push(new Card("\uD83C\uDCB9",9, "9 of hearts"));
         newDeck.push(new Card("\uD83C\uDCBA",10, "10 of hearts"));
-        newDeck.push(new Card("\uD83C\uDCBB",12, "King of hearts"));
-        newDeck.push(new Card("\uD83C\uDCBD",13, "Queen of hearts"));
-        newDeck.push(new Card("\uD83C\uDCBE",12, "Jack of hearts"));
+        newDeck.push(new Card("\uD83C\uDCBB",15, "King of hearts"));
+        newDeck.push(new Card("\uD83C\uDCBD",16, "Queen of hearts"));
+        newDeck.push(new Card("\uD83C\uDCBE",17, "Jack of hearts"));
 
         //Diamonds
         newDeck.push(new Card("\uD83C\uDCC1",1, "Ace of diamonds"));
@@ -65,9 +65,9 @@ public class Deck {
         newDeck.push(new Card("\uD83C\uDCC8",8, "8 of diamonds"));
         newDeck.push(new Card("\uD83C\uDCC9",9, "9 of diamonds"));
         newDeck.push(new Card("\uD83C\uDCCA",10, "10 of diamonds"));
-        newDeck.push(new Card("\uD83C\uDCCB",12, "King of diamonds"));
-        newDeck.push(new Card("\uD83C\uDCCD",13, "Queen of diamonds"));
-        newDeck.push(new Card("\uD83C\uDCCE",12, "Jack of diamonds"));
+        newDeck.push(new Card("\uD83C\uDCCB",15, "King of diamonds"));
+        newDeck.push(new Card("\uD83C\uDCCD",16, "Queen of diamonds"));
+        newDeck.push(new Card("\uD83C\uDCCE",17, "Jack of diamonds"));
 
 
         //Clubs
@@ -81,9 +81,9 @@ public class Deck {
         newDeck.push(new Card("\uD83C\uDCD8",8, "8 of clubs"));
         newDeck.push(new Card("\uD83C\uDCD9",9, "9 of clubs"));
         newDeck.push(new Card("\uD83C\uDCDA",10, "10 of clubs"));
-        newDeck.push(new Card("\uD83C\uDCDB",12, "King of clubs"));
-        newDeck.push(new Card("\uD83C\uDCDD",13, "Queen of clubs"));
-        newDeck.push(new Card("\uD83C\uDCDE",12, "Jack of clubs"));
+        newDeck.push(new Card("\uD83C\uDCDB",15, "King of clubs"));
+        newDeck.push(new Card("\uD83C\uDCDD",16, "Queen of clubs"));
+        newDeck.push(new Card("\uD83C\uDCDE",17, "Jack of clubs"));
 
         this.deck = newDeck;
     }

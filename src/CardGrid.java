@@ -80,24 +80,15 @@ public class CardGrid {
     public boolean checkIfEleven(Card A, Card B) {
         if (A.getValue() + B.getValue() == 11) {
             return true;
+
+        } else {
+            return false;
         }
-        else if (A.getValue() == 13 || B.getValue() == 13)
-        {
-            if (A.getValue() == 13) {
-                if (B.getValue() == 12) {
-                    return true;
-                } else {
-                    return false;
-                }
-            } else if (B.getValue() == 13) {
-                if (A.getValue() == 12) {
-                    return true;
-                } else {
-                    return false;
-                }
-            } else {
-                return false;
-            }
+    }
+
+    public boolean checkIfEleven(Card a, Card b, Card c){
+        if(a.getValue()+b.getValue()+c.getValue() ==48){
+            return true;
         } else {
             return false;
         }
